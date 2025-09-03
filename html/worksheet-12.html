@@ -1,0 +1,107 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Worksheet 12</title>
+
+    <link rel="stylesheet" href="../styles/index.css" />
+</head>
+
+<script type="module">
+    import "../sdk/framework.js"
+    import "../sdk/layout/all.js"
+    import "../sdk/worksheet/share-back-section.js"
+    import "../sdk/worksheet/share-front-section.js"
+    import "../sdk/worksheet/share-input.js"
+</script>
+
+<style>
+    section.sheet {
+        flex-direction: row-reverse;
+    }
+
+    section.sheet > h3 {
+        writing-mode: vertical-rl;
+        margin: 0 0 0 1em;
+        text-align: center;
+    }
+
+    section.row {
+        justify-content: center;
+    }
+</style>
+
+<penlock-header title="Worksheet 12"></penlock-header>
+
+<section class="print">
+    <section class="sheet landscape row">
+        <h3>Worksheet (front)</h3>
+
+        <section class="row">
+            <share-front-section
+                header="Seed Phrase"
+                footer="Destroy once done"
+            ></share-front-section>
+            <share-front-section
+                header="Share 1"
+                footer="- Digital -"
+            ></share-front-section>
+            <share-front-section
+                header="Share 2"
+                footer="- Social -"
+            ></share-front-section>
+            <share-front-section
+                header="Share 3"
+                footer="- Legal -"
+            ></share-front-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>Worksheet (back)</h3>
+
+        <section class="row">
+            <share-back-section></share-back-section>
+            <share-back-section></share-back-section>
+            <share-back-section></share-back-section>
+            <share-back-section></share-back-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>Extra Shares (front)</h3>
+
+        <section class="row">
+            <share-front-section
+                header="Share 2"
+                footer="- Social -"
+            ></share-front-section>
+            <share-front-section
+                header="Share 2"
+                footer="- Social -"
+            ></share-front-section>
+            <share-front-section
+                header="Share 2"
+                footer="- Social -"
+            ></share-front-section>
+            <share-front-section
+                header="Share 3"
+                footer="- Legal -"
+            ></share-front-section>
+        </section>
+    </section>
+
+    <section class="sheet landscape row">
+        <h3>Extra Shares (back)</h3>
+
+        <section class="row">
+            <share-back-section></share-back-section>
+            <share-back-section></share-back-section>
+            <share-back-section></share-back-section>
+            <share-back-section></share-back-section>
+        </section>
+    </section>
+</section>
+
+<penlock-footer></penlock-footer>

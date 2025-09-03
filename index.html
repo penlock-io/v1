@@ -1,0 +1,258 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Penlock.io</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
+</script>
+
+<style>
+    body {
+        background: var(--white);
+    }
+
+    body > header {
+        font-size: min(min(1rem, 3vw), 2vh);
+    }
+
+    .fullscreen {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .fullscreen .logo {
+        width: 100%;
+        padding: 6vh 0 0 8vw;
+
+        font-family: var(--monospace);
+        font-size: 2.25em;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+    }
+
+    .fullscreen .logo strong {
+        color: var(--highlight1);
+        font-weight: 600;
+    }
+
+    .fullscreen > section:not(.logo) {
+        max-width: var(--paper-width);
+        gap: 2.62em;
+    }
+
+    .fullscreen button {
+        display: flex;
+        padding: 1em 1.333em;
+        justify-content: center;
+        align-items: center;
+        gap: 0.889em;
+
+        border-radius: 1em;
+        border: 0.1em solid var(--gray);
+        background: var(--white);
+        color: var(--black);
+
+        font-size: 1.125em;
+    }
+
+    .fullscreen .image {
+        height: min(intrinsic, 20vh);
+    }
+
+    .fullscreen img {
+        height: 50%;
+    }
+
+    .fullscreen svg {
+        max-height: 40vh;
+        width: 100%;
+    }
+
+    body > header p {
+        width: 33em;
+        /* FIXME: we should use paper-width, that should be in "REM" */
+        max-width: 100%;
+        margin: 1.125em 0;
+
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .feedback {
+        text-align: center;
+    }
+
+    .card > header > img {
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    .card > header {
+        flex-direction: row;
+    }
+</style>
+
+<header class="column">
+    <div class="fullscreen column">
+        <div class="logo">penl<strong>o</strong>ck</div>
+        <section class="column title">
+            <h1>State-of-the-art seed phrase backup.</h1>
+            <button disabled>
+                <span>Bali Bitcoin Week Pre-Release</span>
+                <span class="green-dot"></span>
+            </button>
+        </section>
+        <section class="column image">
+            <!-- <img src="./assets/tweak.png"> -->
+            <!-- TODO: move this in its own component -->
+            <svg viewbox="0 0 100 50">
+                <defs>
+                    <pattern
+                        id="image"
+                        patternUnits="userSpaceOnUse"
+                        height="100"
+                        width="100"
+                    >
+                        <image
+                            x="0"
+                            y="0"
+                            xlink:href="./html/wheel.png"
+                            height="100"
+                            width="100"
+                        ></image>
+                    </pattern>
+                </defs>
+                <circle cx="50" cy="50" r="50" fill="url(#image)" />
+            </svg>
+        </section>
+    </div>
+
+    <p>
+        Penlock is an
+        <strong
+            >open-source, cryptographically secure, printable
+            paper-computer.</strong
+        >
+        It guides users through secret-splitting their BIP39 seed phrase without
+        an electronic device.
+    </p>
+</header>
+
+<section class="notes">
+    <section class="card">
+        <img class="circled" src="./icons/lightbulb.svg" />
+        <h2>Hello Everyone!</h2>
+        <p>
+            You are browsing the pre-release of Penlock, specially made
+            available for the Bali Bitcoin Week! At that time, the illustrated
+            examples are being worked on. However, I'll be here in the workshops
+            to teach you how to use it, and receive your precious feedback. Have
+            a good week in Bali!
+        </p>
+    </section>
+</section>
+
+<section>
+    <h2>Getting things done</h2>
+
+    <section class="card highlight2">
+        <header>
+            <img src="./icons/phrase.svg" />
+            <h3>Generate a Seed Phrase</h3>
+        </header>
+
+        <section class="description">
+            <p>
+                Generate a 12-word seed phrase using real-world, provable
+                randomness.
+            </p>
+            <aside>
+                <span>
+                    <img src="./icons/clock-white.svg" />
+                    Time required:
+                </span>
+                <ul>
+                    <li>Learning: ~10 minutes</li>
+                    <li>Execution: ~20 minutes</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="components">
+            <a href="./generate.html">
+                <h4>-> Open the Guide</h4>
+            </a>
+        </section>
+    </section>
+
+    <section class="card highlight1">
+        <header>
+            <img src="./icons/cut.svg" />
+            <h3>Split a Seed Phrase</h3>
+        </header>
+
+        <section class="description">
+            <p>
+                Split a seed phrase into 3 (encrypted) shares. Any two of these
+                shares can be used to recover the original seed phrase, but a
+                single compromised share reveals nothing about it.
+            </p>
+            <aside>
+                <span>
+                    <img src="./icons/clock.svg" />
+                    Time required:
+                </span>
+                <ul>
+                    <li>Learning: ~30 minutes</li>
+                    <li>Execution: ~60 minutes / 12 words</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="components">
+            <a href="./split.html">
+                <h4>-> Open the Guide</h4>
+            </a>
+        </section>
+    </section>
+
+    <section class="card highlight1">
+        <header>
+            <img src="./icons/cut.svg" />
+            <h3>Recover a Seed Phrase</h3>
+        </header>
+
+        <section class="description">
+            <p>
+                Recover a seed phrase from 2 Penlock shares belonging to the
+                same set.
+            </p>
+
+            <aside>
+                <span>
+                    <img src="./icons/clock.svg" />
+                    Time required:
+                </span>
+                <ul>
+                    <li>Learning: ~20 minutes</li>
+                    <li>Execution: ~40 minutes / 12 words</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="components">
+            <a href="./recover.html">
+                <h4>-> Open the Guide</h4>
+            </a>
+        </section>
+    </section>
+</section>
+
+<penlock-footer></penlock-footer>

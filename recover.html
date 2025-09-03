@@ -1,0 +1,287 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Split a Seed Phrase</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
+</script>
+
+<style>
+    h4 {
+        padding-top: 1.4em;
+    }
+
+    .card {
+        margin-bottom: 0.6em;
+        padding: 1.65em 1.09em;
+    }
+
+    .card table {
+        width: 100%;
+        font-family: var(--monospace);
+        border-spacing: 0.6em;
+        text-align: center;
+    }
+</style>
+
+<section class="print">
+    <section class="sheet column guide">
+        <h2>Recover a Seed Phrase</h2>
+
+        <header>
+            <strong>Learning time:</strong> ~20 minutes             
+            <strong>Execution time:</strong> ~40 minutes / 12 words
+        </header>
+
+        <section>
+            <h3>Components</h3>
+            <p>
+                In addition to printing and assembling the components linked
+                below, you will need a pencil, an eraser, and two Penlock shares
+                that belong to the same set.
+            </p>
+
+            <dd>
+                <a href="./pdf/worksheet-12.pdf" target="_blank"
+                    >Worksheet-12.pdf</a
+                >,
+                <a href="./pdf/worksheet-18.pdf" target="_blank"
+                    >Worksheet-18.pdf</a
+                >,
+                <a href="./pdf/worksheet-24.pdf" target="_blank"
+                    >Worksheet-24.pdf</a
+                >
+                (first page only)
+            </dd>
+            <dt>
+                <p>
+                    The worksheet is used to write the seed phrase during the
+                    recovery process. Other sections (shares) are left unused.
+                    Note that each word is made of 2 gray boxes
+                    (Penlock-specific checksum), and 4 white boxes (truncated
+                    seed word).
+                </p>
+            </dt>
+
+            <dd>
+                <a href="./pdf/wheel.pdf" target="_blank">Wheel.pdf</a>
+                (single-sided; thick paper is better)
+            </dd>
+            <dt>
+                <p>
+                    The wheel is the primary tool for recovering the seed
+                    phrase. To assemble it, proceed with the following steps:
+                </p>
+
+                <ol>
+                    <li>Print and carefully cut out both disks.</li>
+                    <li>
+                        On the colored disk, cut out the pointer window. The
+                        smaller numbered windows are not needed for this
+                        recovery process.
+                    </li>
+                    <li>
+                        Attach both disks together at their center using a snap
+                        button, a brass fastener, or a pin. Ensure the colored
+                        wheel is placed on top and can rotate freely.
+                    </li>
+                </ol>
+                <p>
+                    The wheel has 4 distinct sections that will be referred to
+                    as follows: the pointer, the outer (character) ring, the
+                    inner (character) ring, and the numbered spiral.
+                </p>
+
+                <aside>
+                    <em>Fraudproof:</em>
+                    (If received from a third party) The characters on the outer
+                    ring must be, in clockwise order: A to Z, -, =, #. When the
+                    pointer is on '=', each character on the inner ring must be
+                    aligned with and identical to the outer ring ones.
+                </aside>
+            </dt>
+
+            <dd>
+                <a href="./pdf/sumtable.pdf" target="_blank">Sumtable.pdf</a>
+            </dd>
+            <dt>
+                <p>
+                    The sumtable is used to verify the recovery is error-free,
+                    to correct any errors, and to complete the recovered words.
+                </p>
+                <aside>
+                    <em>Security:</em> We recommend using a paper version that
+                    you have printed yourself from this website.
+                </aside>
+            </dt>
+
+            <dd>
+                <a href="./pdf/wordlist.pdf" target="_blank">Wordlist.pdf</a>
+                (situational)
+            </dd>
+            <dt>
+                <p>
+                    The wordlist might be needed to correct a specific type of
+                    error. You can delay printing it until necessary.
+                </p>
+                <aside>
+                    <em>Security:</em> We recommend using a paper version that
+                    you have printed yourself from this website.
+                </aside>
+            </dt>
+        </section>
+
+        <section>
+            <h3>Procedure</h3>
+
+            <h4>Doing This Well</h4>
+            <ul>
+                <li>Prefer a private space where you won't be disturbed</li>
+                <li>Keep cameras and prying eyes away</li>
+                <li>Avoid pronouncing the results out loud</li>
+            </ul>
+
+            <h4>A. Identify the Recovery Window and Share Position</h4>
+            <p>
+                The recovery window you need to use depends on which shares you
+                are recovering from:
+            </p>
+
+            <div class="card">
+                <table>
+                    <thead>
+                        <th>Inner Share</th>
+                        <th></th>
+                        <th>Outer Share</th>
+                        <th></th>
+                        <th>Recovery Window</th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Share 1</td>
+                            <td>+</td>
+                            <td>Share 2</td>
+                            <td>→</td>
+                            <td>Pointer (▼)</td>
+                        </tr>
+                        <tr>
+                            <td>Share 2</td>
+                            <td>+</td>
+                            <td>Share 3</td>
+                            <td>→</td>
+                            <td>Pointer (▼)</td>
+                        </tr>
+                        <tr>
+                            <td>Share 1</td>
+                            <td>+</td>
+                            <td>Share 3</td>
+                            <td>→</td>
+                            <td>Window 29→</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ol>
+                <li>
+                    Using the table above, identify the correct recovery window
+                    for your shares.
+                </li>
+                <li>
+                    Note which share is the inner share and which is the outer
+                    share.
+                </li>
+            </ol>
+
+            <h4>B. Recover the Seed Phrase</h4>
+            <p>
+                The seed phrase is recovered character by character,
+                sequentially. Proceed as follows:
+            </p>
+            <ol>
+                <li>Read the first character of the inner share.</li>
+                <li>On the wheel, locate this character on the inner ring.</li>
+                <li>Read the first character of the outer share.</li>
+                <li>On the wheel, locate this character on the outer ring.</li>
+                <li>Rotate the wheel to align both characters.</li>
+                <li>Read the resulting character from the recovery window.</li>
+                <li>
+                    On the worksheet, write this character as the first
+                    character in the 'Seedphrase' section.
+                </li>
+                <li>
+                    Repeat steps 1 to 7 for each subsequent character until all
+                    the words are recovered.
+                </li>
+            </ol>
+
+            <h4>C. Check & Fix the Words</h4>
+            <p>
+                Look up each of the 12 words in the sumtable. If you find a
+                match, the word is correct. You can then take note of the full
+                word when they are longer than 4 characters.
+            </p>
+            <p>
+                If a word does not match, an error has occurred — either during
+                recovery or when the share was produced or copied. Follow these
+                steps until you identify the correct word:
+            </p>
+            <ol>
+                <li>
+                    Repeat the recovery process from Section B for that specific
+                    word. Pay close attention to characters that are easily
+                    confused, such as E/F, O/Q, U/V, or X/Y. This may produce a
+                    correct result.
+                </li>
+                <li>
+                    If not, among words in the sumtable that start with the
+                    <em>same two grayed checksum characters</em>, look for a
+                    word that is similar but has one or two different
+                    characters. This word is most likely the correct one.
+                </li>
+                <li>
+                    If no match is found in the sumtable, use the wordlist to
+                    find a word that matches the <em>white characters</em> but
+                    has one or two errors in the grayed checksum characters.
+                    This word is most likely the correct one.
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Notes on Initializing a Wallet</h3>
+            <p>
+                A few important notes on initializing a wallet from the
+                recovered seed phrase:
+            </p>
+            <ul>
+                <li>
+                    Consult your wallet's documentation for specific
+                    instructions on recovering from a seed phrase.
+                </li>
+                <li>
+                    Enter only the white characters: the grayed checksum
+                    characters are Penlock-specific.
+                </li>
+                <li>
+                    Omit the dashes: they represent an empty character for
+                    3-letter words.
+                </li>
+                <li>
+                    Hardware wallets typically only require the first 4 letters
+                    of each word, while software wallets often require the full
+                    word.
+                </li>
+            </ul>
+        </section>
+    </section>
+</section>
+
+<penlock-footer></penlock-footer>

@@ -1,0 +1,188 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Generate a Seed Phrase</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
+</script>
+
+<style>
+    h4 {
+        padding-top: 1.4em;
+    }
+</style>
+
+<section class="print">
+    <section class="sheet column guide">
+        <h2>Generate a Seed Phrase</h2>
+
+        <header>
+            <strong>Learning time:</strong> ~10 minutes             
+            <strong>Execution time:</strong> ~20 minutes
+        </header>
+
+        <section>
+            <h3>Introduction</h3>
+            <p>
+                Producing private, provably secure randomness with an electronic
+                device is extremely challenging due to its black-box nature. A
+                seed phrase generated from unsound randomness is insecure, and a
+                flaw in the random number generation, whether intentional or
+                accidental, can take years to discover.
+            </p>
+
+            <p>
+                Penlock offers a simple and straightforward way to generate a
+                seed phrase by hand, eliminating any doubts about its security.
+            </p>
+        </section>
+
+        <section>
+            <h3>Components</h3>
+            <p>
+                In addition to printing and cutting the components linked below,
+                you will need a pen, a pencil, an eraser, and the wallet that
+                will store the seed phrase.
+            </p>
+
+            <dd>
+                <a href="./pdf/worksheet-12.pdf" target="_blank"
+                    >Worksheet-12.pdf</a
+                >,
+                <a href="./pdf/worksheet-18.pdf" target="_blank"
+                    >Worksheet-18.pdf</a
+                >,
+                <a href="./pdf/worksheet-24.pdf" target="_blank"
+                    >Worksheet-24.pdf</a
+                >
+                (double-sided)
+            </dd>
+            <dt>
+                <p>
+                    This worksheet can be used to generate, split, and recover a
+                    seed phrase. However, if you do not intend to split your
+                    seed phrase with Penlock, we recommend using the 12-word
+                    recovery card provided by your wallet instead.
+                </p>
+            </dt>
+
+            <dd>
+                <a href="./pdf/wordlist.pdf" target="_blank">Wordlist.pdf</a>
+            </dd>
+            <dt>
+                <p>
+                    This file contains the standard wordlist used by most
+                    wallets. Each word has been prefixed with a 2-character
+                    checksum (the grayed characters).
+                </p>
+                <aside>
+                    <em>Security:</em> We recommend using a paper version that
+                    you have printed yourself from this website.
+                </aside>
+            </dt>
+
+            <dd>
+                <a href="./pdf/tiles.pdf" target="_blank">Tiles.pdf</a>
+                (double-sided)
+            </dd>
+            <dt>
+                <p>
+                    These tiles are used to generate random numbers. After
+                    printing and cutting, ensure the value on the tiles is
+                    identical on both sides. A detailed check of every tile is
+                    not required; if the document was misprinted, none of the
+                    tiles will be correct.
+                </p>
+
+                <aside>
+                    <em>Fraudproof:</em>
+                    (If received from a third party) A complete set must include
+                    two series of 32 tiles numbered from 1 to 32. The first
+                    series is suffixed with a white dot (◦), the second with a
+                    black dot (•). The value must be identical on both sides of
+                    every tile.
+                </aside>
+            </dt>
+        </section>
+
+        <section>
+            <h3>Procedure</h3>
+
+            <h4>Doing This Well</h4>
+            <ul>
+                <li>Prefer a private space where you won't be disturbed</li>
+                <li>Keep cameras and prying eyes away</li>
+                <li>Avoid pronouncing the results out loud</li>
+            </ul>
+
+            <h4>A. Generate the 11 first words</h4>
+            <p>
+                The first 11 words of a seed phrase are fully random and can be
+                generated without further processing. Each tile has a number and
+                a dot, and each word is tied to a number-number-dot combination.
+                Then:
+            </p>
+            <ol>
+                <li>Shuffle the tiles thoroughly and pick up a random tile.</li>
+                <li>
+                    On the wordlist, identify the column that starts with the
+                    number on the tile (we ignore the dot for now).
+                </li>
+                <li>
+                    Put the tile back, shuffle, and pick up a random tile again.
+                </li>
+                <li>
+                    In the column you previously identified, find the word that
+                    matches the number+dot combination on the tile.
+                </li>
+                <li>
+                    On the worksheet, write down the first 6 characters under
+                    the 'Seedphrase' section, respecting the gray & white
+                    backgrounds coding.
+                </li>
+                <li>Repeat steps 1 to 5 until you have generated 11 words.</li>
+            </ol>
+
+            <h4>B. Generate the 12th word</h4>
+            <p>
+                The last word is partly random but also contains a checksum that
+                depends on the previous words. We are going to select a random
+                group of 16 candidate words, out of which only one can be
+                accepted by the wallet. On the wordlist, these groups are
+                delimited by black horizontal separators.
+            </p>
+            <ol>
+                <li>
+                    Use the tiles to generate a random word, as previously
+                    described.
+                </li>
+                <li>
+                    On the wordlist, identify the 16-word group that this word
+                    is part of.
+                </li>
+                <li>
+                    On the wallet, initialize the recovery process and enter the
+                    first 11 words, without the grayed characters (checksum),
+                    and without the dashes (-).
+                </li>
+                <li>
+                    For the 12th word, try each of the 16 candidate words until
+                    one is accepted.
+                </li>
+                <li>
+                    On the worksheet, write down the valid 12th word under the
+                    'Seedphrase' section.
+                </li>
+            </ol>
+        </section>
+    </section>
+</section>
+
+<penlock-footer></penlock-footer>

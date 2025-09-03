@@ -1,0 +1,392 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Split a Seed Phrase</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<script type="module">
+    import "./sdk/framework.js"
+    import "./sdk/layout/all.js"
+</script>
+
+<style>
+    h4 {
+        padding-top: 1.4em;
+    }
+</style>
+
+<section class="print">
+    <section class="sheet column guide">
+        <h2>Split a Seed Phrase</h2>
+
+        <header>
+            <strong>Learning time:</strong> ~30 minutes             
+            <strong>Execution time:</strong> ~60 minutes / 12 words
+        </header>
+
+        <section>
+            <h3>Introduction</h3>
+            <p>
+                Seed phrases are a convenient way to back up a wallet while
+                maintaining complete ownership. However, they have significant
+                disadvantages. If a seed phrase is lost or stolen, the funds can
+                be irremediably compromised. Furthermore, planning for
+                inheritance requires entrusting the phrase to a third party,
+                which again places the funds at risk.
+            </p>
+            <p>
+                Penlock's secret-splitting generates 3 (encrypted) shares. Any
+                two of these shares can be used to recover the original seed
+                phrase, but a single compromised share reveals nothing about it.
+                This 2-of-3 backup allows for off-site recovery, as well as
+                trust-minimized inheritance.
+            </p>
+        </section>
+
+        <section>
+            <h3>Components</h3>
+            <p>
+                In addition to printing and assembling the components linked
+                below, you will need a pencil, an eraser, a pen, scissors, and
+                the seed phrase to split:
+            </p>
+
+            <dd>
+                <a href="./pdf/worksheet-12.pdf" target="_blank"
+                    >Worksheet-12.pdf</a
+                >,
+                <a href="./pdf/worksheet-18.pdf" target="_blank"
+                    >Worksheet-18.pdf</a
+                >,
+                <a href="./pdf/worksheet-24.pdf" target="_blank"
+                    >Worksheet-24.pdf</a
+                >
+                (double-sided)
+            </dd>
+            <dt>
+                <p>
+                    The worksheet is divided into 4 sections: one for the seed
+                    phrase, and three for the shares. Each section contains the
+                    same number of word, and words are composed of 6 characters:
+                    two with a gray background (for the Penlock checksum), and 4
+                    with a white background (for the truncated words). An
+                    additional sheet is provided to produce copies of shares 2
+                    and 3.
+                </p>
+            </dt>
+
+            <dd>
+                <a href="./pdf/wheel.pdf" target="_blank">Wheel.pdf</a>
+                (single-sided; thick paper is better)
+            </dd>
+            <dt>
+                <p>
+                    The wheel is the primary tool for splitting and recovering
+                    the seed phrase. To assemble it, proceed with the following
+                    steps:
+                </p>
+
+                <ol>
+                    <li>Print and carefully cut out both disks.</li>
+                    <li>
+                        On the colored disk, cut out the pointer window. The
+                        smaller numbered windows are not needed for this
+                        recovery process.
+                    </li>
+                    <li>
+                        Attach both disks together at their center using a snap
+                        button, a brass fastener, or a pin. Ensure the colored
+                        wheel is placed on top and can rotate freely.
+                    </li>
+                </ol>
+                <p>
+                    The wheel has 4 distinct sections that will be referred to
+                    as follows: the pointer, the outer (character) ring, the
+                    inner (character) ring, and the numbered spiral.
+                </p>
+
+                <aside>
+                    <em>Fraudproof:</em>
+                    (If received from a third party) The characters on the outer
+                    ring must be, in clockwise order: A to Z, -, =, #. When the
+                    pointer is on '=', each character on the inner ring must be
+                    aligned with and identical to the outer ring ones.
+                </aside>
+            </dt>
+
+            <dd>
+                <a href="./pdf/wordlist.pdf" target="_blank">Wordlist.pdf</a>
+            </dd>
+            <dt>
+                <p>
+                    This file contains the standard wordlist used by most
+                    wallets. Each word has been prefixed with a 2-character
+                    checksum (the grayed characters). It helps detect and
+                    correct mistakes that might occur during the splitting or
+                    recovery process.
+                </p>
+                <aside>
+                    <em>Security:</em> We recommend using a paper version that
+                    you have printed yourself from this website.
+                </aside>
+            </dt>
+
+            <dd>
+                <a href="./pdf/tiles.pdf" target="_blank">Tiles.pdf</a>
+                (double-sided)
+            </dd>
+            <dt>
+                <p>
+                    These tiles are used to generate random numbers. After
+                    printing and cutting, ensure the value on the tiles is
+                    identical on both sides. A detailed check of every tile is
+                    not required; if the document was misprinted, none of the
+                    tiles will be correct.
+                </p>
+
+                <aside>
+                    <em>Fraudproof:</em>
+                    (If received from a third party) A complete set must include
+                    two series of 32 tiles numbered from 1 to 32. The first
+                    series is suffixed with a white dot (◦), the second with a
+                    black dot (•). The value must be identical on both sides of
+                    every tile.
+                </aside>
+            </dt>
+        </section>
+
+        <section>
+            <h3>Designing a Backup Strategy</h3>
+            <p>
+                Before generating your shares, it is advised to create a clear
+                plan for how they will be stored. A good backup strategy is one
+                that suits your needs and technical ability. Moreover, the
+                recovery process must be easy to remember, even after years, and
+                — in the case of inheritance — achievable by your heirs. To help
+                you design this strategy, we provide a generic framework that
+                you can tailor to your needs.
+            </p>
+
+            <h4>Types of Storage</h4>
+            <p>
+                A suggested type of storage is written on each share. The
+                general principle is to force an attacker to execute two
+                different types of attacks to gain access to the seed phrase.
+            </p>
+            <ul>
+                <li>
+                    <em>Share 1, Digital:</em> Stored on an encrypted device,
+                    typically in a password manager. It can optionally be
+                    cloud-synced.
+                </li>
+                <li>
+                    <em>Share 2, Social:</em> Give copies to 2 or 3 trusted
+                    people, and possibly keep one at home.
+                </li>
+                <li>
+                    <em>Share 3, Legal (Optional):</em> This share is meant to
+                    be stored in a safe deposit box or included as part of a
+                    will. If this is not possible, we recommend not generating
+                    this share altogether.
+                </li>
+            </ul>
+            <p>
+                For digital and legal shares, we generally recommend keeping it
+                simple by opting for a service provider you already trust and
+                use. If this is not an option, familiarize yourself with the new
+                service first. Most crucially, always ensure the recovery path
+                is properly configured and well understood ahead of time.
+            </p>
+
+            <h4>Off-site recovery</h4>
+            <p>
+                Off-site recovery is an important feature of any backup system.
+                In practice, this requires the ability to access two different
+                shares from outside your primary residence. The social and legal
+                shares typically provide this capability. If you choose not to
+                use a legal share, cloud-syncing the digital share is a viable
+                alternative.
+            </p>
+
+            <h4>Trust-Minimized Inheritance</h4>
+            <p>
+                Trust-minimized inheritance is achieved by creating a path that
+                lets your heir access a second, different share in addition to
+                the social share they were already given. There are two ways to
+                do this:
+            </p>
+            <ul>
+                <li>
+                    <em>Legal Inheritance:</em> A safe deposit box can typically
+                    be accessed by a chosen person upon the presentation of a
+                    death certificate. Alternatively, the legal share can be
+                    included as part of a will.
+                </li>
+                <li>
+                    <em>Digital Inheritance:</em> Various online services,
+                    including some password managers, offer digital inheritance
+                    features. Typically, a chosen person can request access at
+                    any time. They will receive the data after a delay period of
+                    your choice, unless you personally cancel the request.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Procedure</h3>
+
+            <h4>Doing This Well</h4>
+            <ul>
+                <li>Prefer a private space where you won't be disturbed</li>
+                <li>Keep cameras and prying eyes away</li>
+                <li>Avoid pronouncing the results out loud</li>
+            </ul>
+
+            <h4>A. Write the Seed Phrase</h4>
+            <p>
+                If you generated your seed phrase with Penlock, directly on the
+                worksheet, then you can skip this section.
+            </p>
+            <p>
+                Use the wordlist to find your words formatted the Penlock way,
+                and copy the first 6 characters on the worksheet under the
+                'Seedphrase' section, respecting the gray & white backgrounds
+                coding.
+            </p>
+
+            <h4>B. Generate the Shares</h4>
+            <p>
+                The shares are generated sequentially, one character at a time.
+                The first character of each share is produced from the first
+                character of the seed phrase, and so on. Use a pencil for now,
+                as corrections might be needed if a mistake occurs:
+            </p>
+            <ol>
+                <li>
+                    Move the wheel's pointer to the first character of the seed
+                    phrase.
+                </li>
+                <li>Shuffle the tiles thoroughly and pick one at random.</li>
+                <li>
+                    On the wheel, find the window whose number matches the value
+                    on the tile.
+                </li>
+                <li>If the seed phrase character is '=':</li>
+                <ul>
+                    <li>
+                        On the worksheet, write the character from that window
+                        as the first character for all three shares (as
+                        indicated by the 'x3' mention).
+                    </li>
+                </ul>
+                <li>Otherwise:</li>
+                <ul>
+                    <li>
+                        On the worksheet, write the character from that window
+                        as the first character of 'Share 1'.
+                    </li>
+                    <li>
+                        Write the character from the next window (in numbering
+                        order) as the first character of 'Share 2'. Note: The
+                        numbering loops; the window after 29 is window 1.
+                    </li>
+                    <li>
+                        If you want a third share, write the character from the
+                        window after that as the first character of Share 3.
+                    </li>
+                </ul>
+                <li>
+                    Repeat steps 1 to 5 for each subsequent character until the
+                    shares are complete.
+                </li>
+            </ol>
+
+            <h4>C. Verify the Shares</h4>
+            <p>
+                Before disposing of the cleartext seed phrase, it is of utmost
+                importance to verify that all shares are correct. This is done
+                by simulating the recovery process in a way that speeds up the
+                verification. As before, we proceed sequentially, one character
+                at a time:
+            </p>
+            <ol>
+                <li>
+                    Move the wheel's pointer to the first character of the seed
+                    phrase.
+                </li>
+                <li>
+                    On the wheel's inner character ring, locate the first
+                    character of 'Share 1'.
+                </li>
+                <li>
+                    Verify that the character on the outer ring aligned with it
+                    is the first character of 'Share 2'.
+                </li>
+                <li>
+                    If they do not match, the characters of all shares for this
+                    position are erroneous and must be regenerated using the
+                    steps in Section B.
+                </li>
+                <li>
+                    If you produced three shares: locate the first character of
+                    'Share 2' on the inner ring and verify that the character on
+                    the outer ring aligned with it is the first character of
+                    'Share 3'.
+                </li>
+                <li>
+                    Once again, if they do not match, the characters of all
+                    shares for this position must be regenerated.
+                </li>
+                <li>
+                    Repeat steps 1 to 6 for each subsequent character until the
+                    shares are fully verified.
+                </li>
+            </ol>
+
+            <h4>D. Finalize the Shares</h4>
+            <p>
+                Assuming that 'Share 1' is stored digitally, it requires no
+                further processing. 'Share 2' and 'Share 3', however, need to be
+                traced over in pen, cut out, and possibly copied, depending on
+                your backup strategy. Use the worksheet's extra shares for this
+                purpose, ensuring you copy the data accurately and respect the
+                share numbering.
+            </p>
+            <p>
+                After cutting out these shares, fill out the back of each one by
+                adding the date, the wallet brand and model, and the owner’s
+                name or pseudonym. This prevents shares from different sets from
+                being mixed up and simplifies the recovery process later.
+            </p>
+        </section>
+
+        <section>
+            <h3>Notes on Storing the Shares</h3>
+            <p>
+                We recommend storing physical shares in waterproof, sealed
+                containers such as opaque poly mailers. When entrusting a share
+                to another person, ensure clear identifying information is
+                written on the container and explain proper storage practices
+                (e.g., keeping it dry, safe, and confidential).
+            </p>
+            <p>
+                The legal share — if it is part of an inheritance plan — may be
+                accompanied by the printed recovery guide and the required
+                components, as detailed in that guide. This will simplify the
+                recovery process for the beneficiary.
+            </p>
+            <p>
+                The digital share must be entered with care and stored with the
+                same identifying information as the other shares. Note that no
+                other shares should ever be digitized, as this would weaken the
+                security of the 2-of-3 backup.
+            </p>
+        </section>
+    </section>
+</section>
+
+<penlock-footer></penlock-footer>

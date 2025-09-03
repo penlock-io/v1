@@ -1,0 +1,94 @@
+/* Layout */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    /* Disable Chromium's "force dark mode" */
+    color-scheme: only light !important;
+}
+
+body {
+    width: 94.5em;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    padding: 1.7vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-xl);
+
+    font-family: var(--font-family);
+    font-optical-sizing: auto;
+    background: var(--gray-50);
+}
+
+body > :not(header):not(penlock-header):not(footer):not(penlock-footer) {
+    width: var(--paper-width);
+}
+
+body > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-s);
+}
+
+/* Blocks */
+
+h1 {
+    margin: 0;
+    font-size: 4em;
+    font-weight: normal;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h4 {
+    margin: 0;
+    font-size: 1.15em;
+    font-weight: bold;
+}
+
+aside {
+    font-style: italic;
+}
+
+aside em {
+    text-decoration: underline;
+}
+
+ul,
+ol {
+    padding: 0 0.3em;
+    list-style-position: inside;
+}
+
+/* Inline */
+
+a {
+    color: var(--black);
+    text-underline-offset: 0.16em;
+    text-decoration-thickness: 1px;
+}
+
+span img {
+    /* FIXME: hacky way to vertically-center according to line height */
+    margin-bottom: -0.15em;
+}

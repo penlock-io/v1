@@ -1,0 +1,137 @@
+/* # DESIGN
+ *
+ * This style sheet is intended to provide to provide a fair in-browser display of content that is meant to be printed. However, due to technical limitation, this is not _exactly_ identical.
+ *
+ * A `.sheet` block has _at least_ the size of an A4 sheet, but might actually have an higher height to fit the content. On paper, it will use one or several pages, and leave the end of the last page blank.
+ *
+ * A `.sheet .landscape` display its content as a landscape page, and its size is fixed. (overflows are ignored)
+ *
+ * FIXME: Potentially useful content: stack overflow -> how to rotate image with css only
+ */
+
+/* Configuration */
+
+:root {
+    --page-margin: 6.35;
+    /* FIXME: should be 4.2333; Something's wrong somewhere */
+    --font-ratio: calc(210 / 4.2466);
+
+    --margin-ratio: calc(var(--page-margin) / (210 - var(--page-margin)));
+    --height-ratio: calc(
+        (297 - 2 * var(--page-margin)) / (210 - 2 * var(--page-margin))
+    );
+}
+
+/* Always */
+
+.sheet {
+    overflow: hidden;
+}
+
+/* On Screen */
+
+@media screen {
+    :root {
+        /* FIXME: should not be 97.7vw, something's wrong somewhere */
+        --paper-width: min(96.6vw, 1rem * var(--font-ratio));
+        --paper-height: calc(var(--paper-width) * var(--height-ratio));
+        --paper-border: calc(var(--paper-width) * var(--margin-ratio));
+
+        --paper-margin: var(--paper-border);
+    }
+
+    .sheet {
+        width: var(--paper-width);
+        min-height: var(--paper-height);
+        /* margin: var(--paper-margin) 0; */
+        border: solid var(--paper-border) white;
+    }
+
+    .landscape {
+        width: var(--paper-height);
+        max-width: var(--paper-height);
+        min-height: var(--paper-width);
+        max-height: var(--paper-width);
+
+        /* margin: 0; */
+        /* margin-bottom: calc( */
+        /*     var(--paper-height) - var(--paper-width) + var(--paper-margin) */
+        /* ); */
+        transform: rotate(-90deg) translate(-15%);
+        transform-origin: top 50%;
+        margin-bottom: calc(var(--paper-height) - var(--paper-width));
+    }
+
+    .strict,
+    .landscape {
+        font-size: calc(var(--paper-width) / var(--font-ratio));
+    }
+}
+
+/* On Paper */
+
+@media print {
+    :root {
+        --paper-height: calc(297mm - 2mm * var(--page-margin));
+        --paper-width: calc(210mm - 2mm * var(--page-margin));
+    }
+
+    /* Safari/Webkit print margins fix */
+    _::-webkit-full-page-media,
+    _:future,
+    :root {
+        --page-margin: 14;
+        --paper-height: calc(297mm - 4mm * var(--page-margin));
+    }
+
+    @page {
+        /* Firefox doesn't seem to support `calc` here */
+        /* margin: calc(1mm * var(--page-margin)); */
+        margin: 6.35mm;
+    }
+
+    .sheet {
+        width: var(--paper-width);
+        min-height: calc(var(--paper-height) - 1mm);
+
+        break-inside: avoid;
+        page-break-after: always;
+
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+
+        box-shadow: unset;
+    }
+
+    .landscape {
+        width: var(--paper-height);
+        max-width: var(--paper-height);
+        min-height: calc(var(--paper-width) - 1mm);
+        max-height: calc(var(--paper-width) - 1mm);
+
+        /* FIXME: a bit hacky ? */
+        transform: rotate(-90deg) translate(-100%);
+        transform-origin: top left;
+        margin-bottom: calc(var(--paper-height) - var(--paper-width) + 1mm);
+    }
+
+    body > :not(.print) {
+        display: none;
+    }
+
+    body,
+    .print {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        padding: 0 !important;
+        background: white;
+    }
+
+    section,
+    table,
+    img,
+    svg {
+        break-inside: avoid;
+    }
+}

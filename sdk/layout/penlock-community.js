@@ -4,7 +4,7 @@ export class PenlockCommunity extends El {
         return html`
             <nav class="buttons">
                 <a
-                    href="https://github.com/penlock-io/beta.penlock.io"
+                    href="https://github.com/penlock-io/v1/discussions"
                     target="_blank"
                     class="button"
                 >
@@ -12,7 +12,7 @@ export class PenlockCommunity extends El {
                     Forum
                 </a>
                 <a
-                    href="https://github.com/penlock-io/beta.penlock.io"
+                    href="https://github.com/penlock-io/v1"
                     target="_blank"
                     class="button"
                 >

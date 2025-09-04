@@ -4,6 +4,13 @@ export class PenlockCommunity extends El {
         return html`
             <nav class="buttons">
                 <a
+                    href="https://penlock.io/nostr"
+                    target="_blank"
+                    class="button highlight2"
+                >
+                    <img src="${origin}/icons/nostr.svg" />
+                </a>
+                <a
                     href="https://github.com/penlock-io/v1/discussions"
                     target="_blank"
                     class="button"

@@ -31,9 +31,9 @@ export class Codex {
         this.translate.inputs = this.translate.matrix[0]
         this.translate.outputs = this.translate.inputs
 
-        // TODO: rewrite the last line of the matrix with inverse divisors.
         this.charset.forEach((i, char) => {
-            this.translate.matrix[i][0] = `${char}`
+            const pos = (i + 29 - 1) % 29
+            this.translate.matrix[pos][0] = `${char}`
         })
 
         this.exponents = new Table({

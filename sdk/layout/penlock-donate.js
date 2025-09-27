@@ -11,7 +11,7 @@ export class PenlockDonate extends El {
 
                 <div class="row">
                     <div class="column">
-                        <img src="${origin}/asset/qr-bitcoin.svg" />
+                        <img src="${origin}/images/qr-bitcoin.svg" />
                         <strong>Bitcoin:</strong>
                         <a
                             href="bitcoin:bc1qq2xjsaune2uqfmlqp0lxu7knmr59wgfpa2nc3a?label=Penlock.io&message=Thanks%20for%20your%20support!"
@@ -20,7 +20,7 @@ export class PenlockDonate extends El {
                         >
                     </div>
                     <div class="column">
-                        <img src="${origin}/asset/qr-lightning.svg" />
+                        <img src="${origin}/images/qr-lightning.svg" />
 
                         <strong>Lightning:</strong>
                         <a href="lightning:lightning@penlock.io" target="_blank"

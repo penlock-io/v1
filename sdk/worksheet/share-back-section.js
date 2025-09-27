@@ -9,7 +9,7 @@ export class ShareBackSection extends El {
                 </header>
                 <footer class="column">
                     <h3>Recovery</h3>
-                    <img src="./recovery-qr.svg" />
+                    <img src="../images/qr-recover.svg" />
                     <span>v1.penlock.io/recover</span>
                 </footer>
             </section>

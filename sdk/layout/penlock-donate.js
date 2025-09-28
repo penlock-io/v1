@@ -3,11 +3,7 @@ export class PenlockDonate extends El {
         const { origin } = window.location
         return html`
             <div class="card">
-                <p>
-                    <strong>Penlock is a peer-funded project!</strong> You can
-                    help us grow and provide value to the community by making a
-                    donation. Thank you very much!
-                </p>
+                <p><strong>${this.invite}</strong> ${this.message}</p>
 
                 <div class="row">
                     <div class="column">

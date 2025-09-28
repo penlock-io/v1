@@ -18,7 +18,7 @@
     <link rel="canonical" href="https://v1.penlock.io/en/generate" />
 
     <script type="module">
-        const languages = ["en"]
+        const languages = ["en", "ko"]
         const preferred = (navigator.language || "en").substring(0, 2)
         const selected = languages.includes(preferred) ? preferred : "en"
         window.location.replace(`/${preferred}/generate.html`)

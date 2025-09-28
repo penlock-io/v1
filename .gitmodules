@@ -1,3 +1,6 @@
 [submodule "en"]
 	path = en
 	url = git@github.com:penlock-io/v1-en.git
+[submodule "ko"]
+	path = ko
+	url = git@github.com:penlock-io/v1-ko.git

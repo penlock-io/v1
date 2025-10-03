@@ -21,7 +21,7 @@
         const languages = ["en", "ko"]
         const preferred = (navigator.language || "en").substring(0, 2)
         const selected = languages.includes(preferred) ? preferred : "en"
-        window.location.replace(`/${preferred}/split.html`)
+        window.location.replace(`/${selected}/split.html`)
     </script>
 
     <meta http-equiv="refresh" content="0; url=/en/split.html" />

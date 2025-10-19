@@ -82,11 +82,11 @@ export class VolvelleTop extends WheelUtils {
         const arrows = Array(xs.length).fill("▲")
         this.charCircle(arrows, (inner + 0.3) / 2, 0, {
             fill: "white",
-            "fill-opacity": 0.66,
+            "fill-opacity": 0.75,
             "font-size": 4.5,
         })
 
-        this.charCircle(xs, (inner - 2) / 2, 0, {
+        this.charCircle(xs, (inner - 1.7) / 2, 0, {
             "font-size": 1,
             "font-weight": 500,
         })
@@ -117,13 +117,12 @@ export class VolvelleTop extends WheelUtils {
 
     label({ window }, x, y, char) {
         this.rectangle(x - window - 0.2, y, 1.6, window + 0.05, {
-            "fill-opacity": 0.66,
+            "fill-opacity": 0.75,
         })
-        // this.text(`${char}→`, x - 1.95, y)
-        this.text(`${char}`, x - 1.8, y + 0.05, {
+        this.text(`${char}`, x - 1.75, y, {
             "letter-spacing": -0.1,
         })
-        this.text("→", x - 1, y - 0.05)
+        this.text("→", x - 0.95, y - 0.175)
     }
 
     window({ window }, x, y) {

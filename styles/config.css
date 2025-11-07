@@ -5,7 +5,8 @@
 :root {
     /* Fonts */
     --font-family: Inter, sans-serif;
-    --monospace: "IBM Plex Mono", ui-monospace, monospace;
+    /* --monospace: "IBM Plex Mono", ui-monospace, monospace; */
+    --monospace: ui-monospace, monospace;
 
     /* Colors */
     --white: #fff;

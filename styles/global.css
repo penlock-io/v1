@@ -83,7 +83,7 @@ ol {
 /* Inline */
 
 a {
-    color: var(--black);
+    color: unset;
     text-underline-offset: 0.16em;
     text-decoration-thickness: 1px;
 }

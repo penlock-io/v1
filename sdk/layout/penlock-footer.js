@@ -7,7 +7,14 @@ export class PenlockFooter extends El {
 
             <section class="column">
                 <span class="logo">penlock</span>
-                <span class="license">Released under MIT license</span>
+                <span class="license"
+                    >Released under
+                    <a
+                        href="https://github.com/penlock-io/v1/blob/master/LICENSE.md"
+                        target="_blank"
+                        >MIT license</a
+                    ></span
+                >
             </section>
         `
     }
@@ -18,8 +25,7 @@ export class PenlockFooter extends El {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: var(--gap-xl);
-                padding-bottom: var(--gap-m);
+                gap: var(--gap-xs);
             }
 
             penlock-community {

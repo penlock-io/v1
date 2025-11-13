@@ -2,13 +2,14 @@ import "./penlock-logo.js"
 
 export class PenlockHeader extends El {
     render(html) {
+        const toggle = this.title ? "" : "hide"
         return html`
             <penlock-logo href="${location.hostname}"></penlock-logo>
-            <header class="column">
+            <header class="column ${toggle}">
                 <span class="subtitle">${this.subtitle}</span>
                 <h2>${this.title}</h2>
             </header>
-            <hr />
+            <hr class="${toggle}" />
         `
     }
 
@@ -16,6 +17,7 @@ export class PenlockHeader extends El {
         return css`
             :host {
                 width: 100%;
+                margin-bottom: calc(-0.5 * var(--gap-xl)) !important;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -29,6 +31,10 @@ export class PenlockHeader extends El {
                 padding: 6vh 0 0 8vw;
                 align-self: start;
                 font-size: 2.25em;
+            }
+
+            .hide {
+                display: none;
             }
 
             .subtitle {

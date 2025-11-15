@@ -3,7 +3,8 @@ export class PenlockDonate extends El {
         const { origin } = window.location
         return html`
             <div class="card">
-                <p><strong>${this.invite}</strong> ${this.message}</p>
+                <h3>${this.invite}</h3>
+                <p>${this.message}</p>
 
                 <div class="row">
                     <div class="column">
@@ -30,15 +31,34 @@ export class PenlockDonate extends El {
 
     styles(css) {
         return css`
+            .card {
+                border: 1px #535557 dotted;
+                border-radius: 0.2em;
+                align-items: center;
+                text-align: center;
+            }
+
+            .card p {
+                max-width: 30em;
+                margin: auto;
+            }
+
+            .row {
+                gap: min(2.25rem, 6.5vw) min(1.69rem, 3.4vw);
+            }
+
             .column {
-                max-width: 45%;
+                width: 35% !important;
+                min-width: 10em;
+                justify-content: flex-start;
                 word-break: break-all;
             }
+
             img {
-                min-width: 10em;
-                max-width: 80%;
-                padding: 1em;
+                width: 100%;
+                margin-bottom: 1.6em;
             }
+
             a {
                 word-wrap: wrap;
             }

@@ -7,7 +7,7 @@ export class PenlockLogo extends El {
         return css`
             :host {
                 display: inline-block;
-                font-family: var(--monospace);
+                font-family: var(--logo-font);
                 font-weight: 600 !important;
                 letter-spacing: -0.04em;
             }

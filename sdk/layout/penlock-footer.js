@@ -35,7 +35,7 @@ export class PenlockFooter extends El {
             }
 
             .logo {
-                font-family: var(--monospace);
+                font-family: var(--logo-font);
                 font-size: calc(min(100vw, 94.5em) * 1.62 / 7);
                 font-weight: 600;
                 letter-spacing: -0.04em;

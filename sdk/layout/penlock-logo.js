@@ -1,6 +1,6 @@
 export class PenlockLogo extends El {
     render(html) {
-        return html`<a href="${location.origin}"> penl<strong>o</strong>ck </a>`
+        return html`<a href="${this.href}"> penl<strong>o</strong>ck </a>`
     }
 
     styles(css) {

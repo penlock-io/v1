@@ -3,8 +3,9 @@ import "./penlock-logo.js"
 export class PenlockHeader extends El {
     render(html) {
         const toggle = this.title ? "" : "hide"
+        const url = location.href.replace(/[^/]*$/, "")
         return html`
-            <penlock-logo href="${location.hostname}"></penlock-logo>
+            <penlock-logo href="${url}"></penlock-logo>
             <header class="column ${toggle}">
                 <span class="subtitle">${this.subtitle}</span>
                 <h2>${this.title}</h2>

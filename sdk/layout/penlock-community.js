@@ -11,6 +11,13 @@ export class PenlockCommunity extends El {
                     <img src="${origin}/icons/nostr.svg" />
                 </a>
                 <a
+                    href="https://x.com/penlock_io"
+                    target="_blank"
+                    class="button"
+                >
+                    <img src="${origin}/icons/twitter.svg" />
+                </a>
+                <a
                     href="https://github.com/penlock-io/v1/discussions"
                     target="_blank"
                     class="button"

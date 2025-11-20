@@ -29,18 +29,6 @@
 
 /* Layout */
 
-.notes {
-    gap: var(--gap-xs);
-}
-.notes > .card {
-    align-items: center;
-    padding: min(2.25rem, 6.5vw) min(3rem, 6vw);
-
-    border-radius: 0.5rem;
-    border: unset;
-    background: var(--note-bg);
-}
-
 .card {
     padding: min(2.25rem, 6.5vw) min(1.69rem, 3.4vw);
 
@@ -69,12 +57,19 @@
 }
 
 .card.note {
-    align-items: center;
-    padding: 2.25rem 3rem;
-
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     border: unset;
     background: var(--note-bg);
+}
+
+.card.note summary {
+    padding-left: 1em;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.card.note p {
+    margin: 1em 0;
 }
 
 .card > header {

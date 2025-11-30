@@ -1,14 +1,15 @@
 export class ShareBackSection extends El {
     render(html) {
+        const fields = this.fields.split(",")
         return html`
             <section class="column">
                 <header class="column">
-                    <section>Date: ___/___/___</section>
-                    <section>Wallet:</section>
-                    <section>Owner:</section>
+                    <section>${fields[0]}: ___/___/___</section>
+                    <section>${fields[1]}:</section>
+                    <section>${fields[2]}:</section>
                 </header>
                 <footer class="column">
-                    <h3>Recovery</h3>
+                    <h3>${fields[3]}</h3>
                     <img src="../images/qr-recover.svg" />
                     <span>v1.penlock.io/recover</span>
                 </footer>
